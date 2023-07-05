@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const arquivo1Routes = require('./files');
+const filesRoute = require('./files');
+const usersRoute = require('./users');
 
 
-router.use('/files', arquivo1Routes);
+router.use('/files', filesRoute);
+router.use('/users', filesRoute);
 
 
 module.exports = router;
