@@ -1,29 +1,30 @@
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+const Connection = require('./config/database');
+
 const app = express();
-const morgan = require("morgan");
-const cors = require('cors')
-const Connection = require("./config/database");
+const PORT = 8080;
 
-app.use(cors())
-app.use(morgan('dev'))
+// Middlewares
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
 
-const routes = require('./src/routes/index');
-const models = require('./src/models');
-
+// Database connection
 Connection.authenticate()
   .then(() => {
-    console.log("Banco is UP!");
+    console.log('Connected to the database');
   })
   .catch((err) => {
-    console.log(err);
+    console.error('Unable to connect to the database:', err);
   });
 
+// Routes
+const routes = require('./src/routes/index');
 app.use('/api', routes);
 
-
-
-const PORT = 8080
-
-app.listen( PORT, () => {
-  console.log(`Server is listening at ${PORT}`)
-})
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
