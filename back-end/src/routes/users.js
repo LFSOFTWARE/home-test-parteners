@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-const { find } = require('../controllers/UserController');
+const UserController = require('../controllers/UserController');
 
-router.get('/', find)
+router.get('/', UserController.find)
 
 
 

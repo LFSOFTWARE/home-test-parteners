@@ -4,7 +4,7 @@
   "description": "back end part of an home test for an position as a fullstack",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch --config ./jest.config.js",
     "start": "npx nodemon index.js"
   },
   "author": "Luiz Fernando",
