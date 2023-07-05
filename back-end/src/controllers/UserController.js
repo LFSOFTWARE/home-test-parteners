@@ -5,8 +5,9 @@ const find = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 50;
+    const q = req.query.q ;
 
-    const users = await userService.getAllUsers(page, limit);
+    const users = await userService.getAllUsers(page, limit, q);
 
     res.status(200).json(response(200, "Fetch users successfully", users));
   } catch (error) {

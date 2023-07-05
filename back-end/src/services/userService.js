@@ -1,16 +1,32 @@
+const sequelize = require('sequelize');
 const Connection = require('../../config/database');
 const { User } = require('../models');
 
-async function getAllUsers(page, limit) {
+async function getAllUsers(page, limit, q) {
   try {
     const offset = (page - 1) * limit;
+    const where = {}
+
+    if (q) {
+      where = {
+        [sequelize.Op.or]: [
+          { name: { [sequelize.Op.like]: `%${q}%` } },
+          { city: { [sequelize.Op.like]: `%${q}%` } },
+          { country: { [sequelize.Op.like]: `%${q}%` } },
+          { favorite_sport: { [sequelize.Op.like]: `%${q}%` } },
+        ],
+      }
+    }
+    
     const users = await User.findAll({
       offset,
       limit,
+      where
     });
+
     return users;
   } catch (error) {
-    throw new Error('Error while getting users');
+    throw new Error('Error while getting users' + error);
   }
 }
 
