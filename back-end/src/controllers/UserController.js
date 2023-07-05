@@ -1,4 +1,4 @@
-const userService = require('../services/userService');
+const UserService = require('../services/userService');
 const { response } = require('../utils/responseUtils');
 
 class UserController{
@@ -8,7 +8,7 @@ class UserController{
       const limit = parseInt(req.query.limit) || 50;
       const q = req.query.q ;
   
-      const users = await userService.getAllUsers(page, limit, q);
+      const users = await UserService.getAllUsers(page, limit, q);
   
       res.status(200).json(response(200, "Fetch users successfully", users));
     } catch (error) {

@@ -1,5 +1,5 @@
 const { parseCSVToJSON, response } = require("../utils");
-const userService = require('../services/userService');
+const UserService = require('../services/userService');
 
 class FileController {
   create = async (req, res) => {
@@ -12,7 +12,7 @@ class FileController {
 
       const results = await parseCSVToJSON(file.buffer);
 
-      const createdUsers = await userService.createUserLote(results)
+      const createdUsers = await UserService.createUserLote(results)
 
       res.json(response(200, "The file was successfully uploaded", createdUsers));
     } catch (error) {
