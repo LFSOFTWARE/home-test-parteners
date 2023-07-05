@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-const { getUsers } = require('../controllers/UserController');
+const { find } = require('../controllers/UserController');
 
-router.get('/', getUsers)
+router.get('/', find)
 
 
 
