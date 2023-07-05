@@ -1,8 +1,12 @@
 const { User } = require('../models');
 
-async function getAllUsers() {
+async function getAllUsers(page, limit) {
   try {
-    const users = await User.findAll();
+    const offset = (page - 1) * limit;
+    const users = await User.findAll({
+      offset,
+      limit,
+    });
     return users;
   } catch (error) {
     throw new Error('Error while getting users');
