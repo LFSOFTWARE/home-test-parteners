@@ -10,7 +10,11 @@
   "author": "Luiz Fernando",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.4.4",
+    "sequelize": "^6.32.1"
   },
   "devDependencies": {
     "jest": "^29.6.0"
