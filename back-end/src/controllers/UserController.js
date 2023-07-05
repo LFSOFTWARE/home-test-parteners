@@ -7,6 +7,7 @@ const find = async (req, res) => {
     const limit = parseInt(req.query.limit) || 50;
 
     const users = await userService.getAllUsers(page, limit);
+
     res.status(200).json(response(200, "Fetch users successfully", users));
   } catch (error) {
     res.status(500).json({ statusCode: 500, message: error.message, error: error.message });

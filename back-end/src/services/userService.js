@@ -14,30 +14,33 @@ async function getAllUsers(page, limit) {
   }
 }
 
+
+async function createUserLote(users) {
+  try {
+    const createdUsers = await createUsers(users);
+    return createdUsers;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error while creating users');
+  }
+}
+
 async function createUsers(users) {
   let transaction;
 
   try {
     transaction = await Connection.transaction();
 
-    await User.bulkCreate(users, { transaction });
-
+    const createdUsers = await User.bulkCreate(users, { transaction, returning: true });
     await transaction.commit();
 
+    return createdUsers;
   } catch (error) {
     if (transaction) await transaction.rollback();
     console.error('Erro ao cadastrar usuários:', error);
   }
 }
 
-async function createUserLote(users) {
-  try {
-    await createUsers(users);
-  } catch (error) {
-    console.error(error);
-    throw new Error('Error while creating users');
-  }
-}
 module.exports = {
   getAllUsers,
   createUserLote

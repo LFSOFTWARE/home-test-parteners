@@ -6,7 +6,7 @@ const Connection = new Sequelize(process.env.DB_NAME,
   host: process.env.DB_HOST,
   dialect: 'mysql',
   timezone: "-03:00",
-  logging: false
+  logging: true
 
 })
 module.exports = Connection
