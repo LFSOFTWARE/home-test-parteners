@@ -8,6 +8,7 @@ app.use(cors())
 app.use(morgan('dev'))
 
 const routes = require('./src/routes/index');
+const models = require('./src/models');
 
 Connection.authenticate()
   .then(() => {
