@@ -1,6 +1,6 @@
-const response = (status, message, data = null) => {
+const response = (statusCode, message, data = null) => {
   return {
-    status,
+    statusCode,
     message,
     data
   };
