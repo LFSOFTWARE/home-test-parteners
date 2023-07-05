@@ -22,6 +22,7 @@ Connection.authenticate()
 
 // Routes
 const routes = require('./src/routes/index');
+
 app.use('/api', routes);
 
 // Start the server

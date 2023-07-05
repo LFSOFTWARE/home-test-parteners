@@ -4,3 +4,5 @@ class ServerError extends Error {
     this.name = 'ServerError'
   }
 }
+
+module.exports = ServerError
