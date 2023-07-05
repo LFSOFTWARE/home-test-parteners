@@ -6,7 +6,7 @@ const usersRoute = require('./users');
 
 
 router.use('/files', filesRoute);
-router.use('/users', filesRoute);
+router.use('/users', usersRoute);
 
 
 module.exports = router;
