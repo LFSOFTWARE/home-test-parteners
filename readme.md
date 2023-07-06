@@ -8,6 +8,7 @@ cd back-end && npm i
 npm start
 
 cd front-end && npm i
+<br>
 npm run start
 
 Front- End 
