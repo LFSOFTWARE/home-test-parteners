@@ -1,12 +1,14 @@
 import React from 'react'
-import { Container } from './styles'
+import { Circle, Container, Button } from './styles'
 
 export default function Pagination() {
   return (
     <Container>
-      <div> {"<"} </div>
-      <p>1</p>
-      <div title='Next'> {">"} </div>
+      <Button title='Previous'> {"<"} </Button>
+      <Circle>
+        <p>1</p>
+      </Circle>
+      <Button title='Next'> {">"} </Button>
     </Container>
   )
 }
