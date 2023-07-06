@@ -1,11 +1,14 @@
-import {  UserProvider } from './contexts/userContext';
+import { UserProvider } from './contexts/userContext';
 import { Home } from './pages/Home';
+import { SnackbarProvider } from 'notistack'
 
 function App() {
   return (
-    <UserProvider>
-      <Home />
-    </UserProvider>
+    <SnackbarProvider>
+      <UserProvider>
+        <Home />
+      </UserProvider>
+    </SnackbarProvider>
   );
 }
 

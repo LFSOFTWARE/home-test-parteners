@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useUser } from '../hooks/useUser';
+import { enqueueSnackbar } from 'notistack';
 
 
 export async function fetchUsers(query, page) {
@@ -32,8 +32,10 @@ export async function PostFile(FILE) {
 
     const response = await axios.post('http://localhost:8080/api/files', formData);
     const { data } = response.data;
+    enqueueSnackbar("Successfully uploaded", { variant:"success"});
     return data;
   } catch (error) {
+    enqueueSnackbar(error.message, { variant:"error"})
     throw new Error('Falha ao buscar os usuários');
   }
 }
