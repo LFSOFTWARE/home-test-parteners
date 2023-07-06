@@ -9,6 +9,16 @@ export const UserProvider = ({ children }) => {
   const [file, setFile] = React.useState(null);
   const [page, setPage] = React.useState(1);
 
+  const nextPage = () => {
+    setPage(page + 1)
+  }
+  const previousPage = () => {
+    if(page >  1 ){
+      setPage(page - 1)
+    }
+  }
+
+  
   React.useEffect(() => {
     async function getUsers() {
       try {
@@ -37,7 +47,10 @@ export const UserProvider = ({ children }) => {
   const contextValues = {
     users,
     setQuery,
-    setFile
+    setFile,
+    page,
+    nextPage,
+    previousPage
   };
 
   return (
