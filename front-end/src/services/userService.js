@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useUser } from '../hooks/useUser';
 
 
 export async function fetchUsers(query, page) {
@@ -24,14 +25,13 @@ export async function fetchUsers(query, page) {
   }
 }
 
-export async function PostFile(file) {
+export async function PostFile(FILE) {
   try {
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", FILE);
 
     const response = await axios.post('http://localhost:8080/api/files', formData);
     const { data } = response.data;
-
     return data;
   } catch (error) {
     throw new Error('Falha ao buscar os usuários');

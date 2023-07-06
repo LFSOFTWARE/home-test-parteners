@@ -21,41 +21,22 @@ export const UserProvider = ({ children }) => {
   }
 
   React.useEffect(() => {
-    async function getUsers() {
+    async function fetchData() {
       try {
-        const users = await fetchUsers(query);
-        setUsers(users);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getUsers();
-  }, [query]);
+        if (file) {
+          await PostFile(file);
+          setFile(null)
+        }
   
-  React.useEffect(() => {
-    async function getUsers() {
-      try {
         const users = await fetchUsers(query, page);
         setUsers(users);
       } catch (error) {
         console.error(error);
       }
     }
-    getUsers();
-  }, [page, query]);
-
-  React.useEffect(() => {
-    async function uploadFile() {
-      try {
-        if (file) {
-          await PostFile(file);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    uploadFile();
-  }, [file]);
+  
+    fetchData();
+  }, [file, query, page]);
 
   const contextValues = {
     users,
