@@ -21,9 +21,11 @@ function ButtonUpload() {
     <Container>
       <input
         type="file"
+        name='file'
         ref={fileInputRef}
         style={{ display: 'none' }}
         onChange={handleFileChange}
+        data-testid="file-upload"
       />
       <Button onClick={handleFileUpload}>Upload CSV</Button>
     </Container>
