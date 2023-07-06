@@ -80,7 +80,7 @@ describe('FileController', () => {
   });
 
 
-  test('Deve tratar erros corretamente', async () => {
+  test('Should return 500 error if parseJson failure', async () => {
 
     const error = new Error('Happens an error when trying to parse CSV');
 
