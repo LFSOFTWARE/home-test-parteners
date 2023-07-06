@@ -24,7 +24,7 @@ class UserService {
       });
 
     } catch (error) {
-      throw new Error('Error while getting users' + error);
+      throw new Error('Error while getting users');
     }
   }
 
