@@ -4,7 +4,7 @@ var router = express.Router();
 const FileController = require('../controllers/FileController');
 const upload = require('../middlewares/upload');
 
-router.post('/',upload.single('csvFile'), FileController.create)
+router.post('/',upload.single('file'), FileController.create)
 
 
 
