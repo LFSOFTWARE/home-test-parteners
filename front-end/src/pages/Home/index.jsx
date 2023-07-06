@@ -4,6 +4,7 @@ import { Card } from '../../components/Card';
 import { SearchBar } from '../../components/SearchBar';
 import { CardWrapper, Container, Content, SearchBox } from './styles';
 import { UserContext } from '../../contexts/userContext';
+import ButtonUpload from '../../components/ButtonUpload';
 
 
 
@@ -14,6 +15,7 @@ export function Home() {
       <Content>
         <SearchBox>
           <SearchBar />
+          <ButtonUpload />
         </SearchBox>
         <CardWrapper>
           {users.map((user) => (

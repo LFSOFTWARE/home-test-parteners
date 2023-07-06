@@ -13,7 +13,7 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 5px;
   justify-content: space-between;
-
+  
   h1{
     color: white;
   }
@@ -21,7 +21,10 @@ export const Container = styled.div`
     color: white;
     font-weight: 500;
   }
-
+  &:hover{
+    cursor: pointer;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  }
 `;
 
 export const Icon = styled.img`

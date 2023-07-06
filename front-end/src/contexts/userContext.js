@@ -1,12 +1,13 @@
 
 import React, { createContext, useEffect, useState } from 'react';
-import { fetchUsers } from '../services/userService';
+import { PostFile, fetchUsers } from '../services/userService';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState(null);
+  const [file, setFile] = useState(null);
 
   async function getUsers() {
     try {
@@ -33,9 +34,23 @@ export const UserProvider = ({ children }) => {
     getUsersBySearch();
   }, [query])
 
+  useEffect(() => {
+    const getUsersBySearch = async () => {
+      try {
+        if(file){
+          await PostFile(file);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getUsersBySearch();
+  }, [file])
+
   const contextValues = {
     users,
-    setQuery
+    setQuery,
+    setFile
   };
 
   return (
