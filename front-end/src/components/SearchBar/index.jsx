@@ -1,11 +1,12 @@
 
-import { Container } from './styles';
+import { Container, Input, SearchIcon } from './styles';
 
 
 export function SearchBar() {
   return (
     <Container>
-      <h1>SearchBar</h1>
+      <Input placeholder='Enter your search terms' />
+      <SearchIcon src='./search-white.png' alt='search'/>
     </Container>
   );
 }
