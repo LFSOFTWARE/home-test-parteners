@@ -70,7 +70,7 @@ describe('UserController', () => {
 
     expect(Array.isArray(data)).toBe(true);
     expect(data.length).toBe(mockUsers.length);
-    expect(data).toBe(mockUsers);
+    expect(data).toEqual(mockUsers);
   })
 
   test('should return an error 500 if some error heepen when call userService ', async () => {
@@ -98,7 +98,7 @@ describe('UserController', () => {
     expect(Array.isArray(data)).toBe(true);
     expect(data.every(user => user.country === 'USA')).toBe(true);
     expect(data.length).toBe(mockUsers.length);
-    expect(data).toBe(mockUsers);
+    expect(data).toEqual(mockUsers);
   })
   test('shound return an array of users if query is empty', async () => {
     const mockUsers = users;
@@ -113,7 +113,7 @@ describe('UserController', () => {
 
     expect(Array.isArray(data)).toBe(true);
     expect(data.length).toBe(mockUsers.length);
-    expect(data).toBe(mockUsers);
+    expect(data).toEqual(mockUsers);
   })
 
   test('shound return an array of users if pagination is not defined', async () => {
@@ -129,6 +129,6 @@ describe('UserController', () => {
 
     expect(Array.isArray(data)).toBe(true);
     expect(data.length).toBe(mockUsers.length);
-    expect(data).toBe(mockUsers);
+    expect(data).toEqual(mockUsers);
   })
 });

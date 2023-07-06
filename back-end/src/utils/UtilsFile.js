@@ -2,7 +2,8 @@ const csv = require('csv-parser');
 const { Readable } = require('stream');
 
 
-const parseCSVToJSON = (fileBuffer) => {
+class UtilsFile{
+ parseCSVToJSON = (fileBuffer) => {
   return new Promise((resolve, reject) => {
     const results = [];
 
@@ -27,6 +28,7 @@ const parseCSVToJSON = (fileBuffer) => {
       });
   });
 };
+}
 
 
-module.exports = parseCSVToJSON
+module.exports =  new UtilsFile()

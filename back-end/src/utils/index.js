@@ -1,8 +1,8 @@
 const { response } = require("./responseUtils")
-const  parseCSVToJSON  = require("./parseCsvToJson")
+const  UtilsFile  = require("./UtilsFile")
 
 
 module.exports = {
   response,
-  parseCSVToJSON
+  UtilsFile
 }

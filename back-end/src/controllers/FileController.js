@@ -1,4 +1,4 @@
-const { parseCSVToJSON, response } = require("../utils");
+const { UtilsFile, response } = require("../utils");
 const UserService = require('../services/userService');
 
 class FileController {
@@ -10,7 +10,7 @@ class FileController {
         return res.status(400).json({ error: 'The file is mandatory' });
       }
 
-      const results = await parseCSVToJSON(file.buffer);
+      const results = await UtilsFile.parseCSVToJSON(file.buffer);
 
       const createdUsers = await UserService.createUserLote(results)
 
