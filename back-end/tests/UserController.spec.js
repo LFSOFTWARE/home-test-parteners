@@ -38,7 +38,7 @@ describe('UserController', () => {
     jest.clearAllMocks();
   });
 
-  test('should returnan users array users successfully and statusCode 200', async () => {
+  test('should return users array users successfully and statusCode 200', async () => {
 
 
     const mockUsers = users;
@@ -46,7 +46,7 @@ describe('UserController', () => {
     UserService.getAllUsers.mockResolvedValue(mockUsers);
 
     await UserController.find(req, res);
-  
+
     const callArgs = res.json.mock.calls[0];
     const data = callArgs[0].data
 
@@ -67,7 +67,7 @@ describe('UserController', () => {
 
     const callArgs = res.json.mock.calls[0];
     const data = callArgs[0].data
-   
+
     expect(Array.isArray(data)).toBe(true);
     expect(data.length).toBe(mockUsers.length);
     expect(data).toBe(mockUsers);
@@ -89,7 +89,7 @@ describe('UserController', () => {
     UserService.getAllUsers.mockResolvedValue(mockUsers);
 
     req.query.q = "USA"
-    
+
     await UserController.find(req, res);
 
     const callArgs = res.json.mock.calls[0];
