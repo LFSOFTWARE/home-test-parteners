@@ -2,18 +2,18 @@
 import { BoxInformations, Container, Icon, InfoWrapper } from './styles';
 
 
-export function Card() {
+export function Card({user}) {
   return (
     <Container>
-      <h1>John Doe</h1>
+      <h1>{user.name}</h1>
       <BoxInformations>
         <InfoWrapper>
           <Icon src='../../adress.png' alt='' />
-          <h3>São Paulo, Brasil</h3>
+          <h3>{user.city}, {user.country}</h3>
         </InfoWrapper>
         <InfoWrapper>
           <Icon src='../../sports.png' alt='' />
-          <h3>Soccer</h3>
+          <h3>{user.favorite_sport}</h3>
         </InfoWrapper>
       </BoxInformations>
     </Container>
