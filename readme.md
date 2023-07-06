@@ -4,9 +4,11 @@
 How Istall?
 
 cd back-end && npm i
+<br>
 npm start
 
 cd front-end && npm i
+<br>
 npm run start
 
 Front- End 
