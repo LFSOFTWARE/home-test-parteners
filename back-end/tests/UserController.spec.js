@@ -38,7 +38,7 @@ describe('UserController', () => {
     jest.clearAllMocks();
   });
 
-  test('should return users successfully and statusCode 200', async () => {
+  test('should returnan users array users successfully and statusCode 200', async () => {
 
 
     const mockUsers = users;
@@ -46,17 +46,19 @@ describe('UserController', () => {
     UserService.getAllUsers.mockResolvedValue(mockUsers);
 
     await UserController.find(req, res);
+  
+    const callArgs = res.json.mock.calls[0];
+    const data = callArgs[0].data
 
-
+    expect(Array.isArray(data)).toBe(true);
     expect(res.status).toHaveBeenCalledWith(200);
-
     expect(res.json).toHaveBeenCalledWith(
       response(200, 'Fetch users successfully', mockUsers)
     );
 
   });
 
-  test('should return users expected by pagination', async () => {
+  test('should return an users array users expected by pagination', async () => {
 
     const mockUsers = users;
     UserService.getAllUsers.mockResolvedValue(mockUsers);
@@ -65,7 +67,8 @@ describe('UserController', () => {
 
     const callArgs = res.json.mock.calls[0];
     const data = callArgs[0].data
-
+   
+    expect(Array.isArray(data)).toBe(true);
     expect(data.length).toBe(mockUsers.length);
     expect(data).toBe(mockUsers);
   })
@@ -76,7 +79,56 @@ describe('UserController', () => {
     });
 
     await UserController.find(req, res);
+
+
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ message: "Error while getting users", error: new Error('Error while getting users'), "statusCode": 500 });
+  })
+  test("Ensure return an users array with corresponding country query searh", async () => {
+    const mockUsers = users;
+    UserService.getAllUsers.mockResolvedValue(mockUsers);
+
+    req.query.q = "USA"
+    
+    await UserController.find(req, res);
+
+    const callArgs = res.json.mock.calls[0];
+    const data = callArgs[0].data
+
+    expect(Array.isArray(data)).toBe(true);
+    expect(data.every(user => user.country === 'USA')).toBe(true);
+    expect(data.length).toBe(mockUsers.length);
+    expect(data).toBe(mockUsers);
+  })
+  test('shound return an array of users if query is empty', async () => {
+    const mockUsers = users;
+    UserService.getAllUsers.mockResolvedValue(mockUsers);
+
+    req.query = { page: 1, limit: 10 }
+
+    await UserController.find(req, res);
+
+    const callArgs = res.json.mock.calls[0];
+    const data = callArgs[0].data
+
+    expect(Array.isArray(data)).toBe(true);
+    expect(data.length).toBe(mockUsers.length);
+    expect(data).toBe(mockUsers);
+  })
+
+  test('shound return an array of users if pagination is not defined', async () => {
+    const mockUsers = users;
+    UserService.getAllUsers.mockResolvedValue(mockUsers);
+
+    req.query = {}
+
+    await UserController.find(req, res);
+
+    const callArgs = res.json.mock.calls[0];
+    const data = callArgs[0].data
+
+    expect(Array.isArray(data)).toBe(true);
+    expect(data.length).toBe(mockUsers.length);
+    expect(data).toBe(mockUsers);
   })
 });
