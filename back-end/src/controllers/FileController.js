@@ -7,7 +7,7 @@ class FileController {
       const file = req.file;
 
       if (!file) {
-        return res.status(400).json({ error: 'Nenhum arquivo foi enviado' });
+        return res.status(400).json({ error: 'The file is mandatory' });
       }
 
       const results = await parseCSVToJSON(file.buffer);

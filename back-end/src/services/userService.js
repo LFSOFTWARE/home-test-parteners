@@ -33,7 +33,6 @@ class UserService {
     try {
       return await this.createUsers(users);
     } catch (error) {
-      console.error(error);
       throw new Error('Error while creating users');
     }
   }
@@ -49,7 +48,7 @@ class UserService {
       return createdUsers;
     } catch (error) {
       if (transaction) await transaction.rollback();
-      console.error('Erro ao cadastrar usuários:', error);
+      throw new Error('Error while creating users');
     }
   }
 }
