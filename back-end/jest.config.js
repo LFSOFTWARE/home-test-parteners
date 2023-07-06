@@ -1,4 +1,10 @@
 module.exports = {
+  roots: ['<rootDir>/tests'],
+  coverageDirectory: 'coverage',
+  coverageProvider: 'babel',
   testEnvironment: 'node',
-  testMatch: ['**/*.spec.js'],
-};
+  moduleNameMapper: {
+    '@/tests/(.*)': '<rootDir>/tests/$1',
+    '@/(.*)': '<rootDir>/src/$1'
+  }
+}
