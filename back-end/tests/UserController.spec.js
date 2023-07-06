@@ -39,7 +39,7 @@ describe('UserController', () => {
   });
 
   test('should return users successfully and statusCode 200', async () => {
-  
+
 
     const mockUsers = users;
 
@@ -59,27 +59,24 @@ describe('UserController', () => {
   test('should return users expected by pagination', async () => {
 
     const mockUsers = users;
-
     UserService.getAllUsers.mockResolvedValue(mockUsers);
 
     await UserController.find(req, res);
 
-    // expect(UserService.getAllUsers).toHaveBeenCalledWith(query.page, query.limit, query.q);
+    const callArgs = res.json.mock.calls[0];
+    const data = callArgs[0].data
 
-    expect(res.status).toHaveBeenCalledWith(200);
-
-    expect(res.json).toHaveBeenCalledWith(
-      response(200, 'Fetch users successfully', mockUsers)
-    );
-
+    expect(data.length).toBe(mockUsers.length);
+    expect(data).toBe(mockUsers);
   })
 
   test('should return an error 500 if some error heepen when call userService ', async () => {
-    UserService.getAllUsers.mockImplementation( () => {
+    UserService.getAllUsers.mockImplementation(() => {
       throw new Error('Error while getting users')
     });
 
     await UserController.find(req, res);
     expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ message: "Error while getting users", error: new Error('Error while getting users'), "statusCode": 500 });
   })
 });
