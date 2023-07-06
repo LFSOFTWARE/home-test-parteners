@@ -12,6 +12,9 @@ export const Content = styled.div`
   max-width: 1920px;
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 

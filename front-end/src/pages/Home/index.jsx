@@ -5,6 +5,7 @@ import { CardWrapper, Container, Content, SearchBox } from './styles';
 
 import ButtonUpload from '../../components/ButtonUpload';
 import { useUser } from '../../hooks/useUser';
+import Pagination from '../../components/Pagiantion';
 
 
 export function Home() {
@@ -22,6 +23,7 @@ export function Home() {
               <Card key={user.id} user={user} />
             ))}
         </CardWrapper>
+        <Pagination />
       </Content>
     </Container>
   );

@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
   const [users, setUsers] = React.useState([]);
   const [query, setQuery] = React.useState(null);
   const [file, setFile] = React.useState(null);
+  const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
     async function getUsers() {
