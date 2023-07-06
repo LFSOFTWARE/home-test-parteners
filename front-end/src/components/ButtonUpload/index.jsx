@@ -1,9 +1,9 @@
-import React, { useContext, useRef } from 'react';
-import { UserContext } from '../../contexts/userContext';
+import React from 'react';
+import { useUser } from '../../hooks/useUser';
 
 function ButtonUpload() {
-  const { setFile } = useContext(UserContext)
-  const fileInputRef = useRef(null);
+  const { setFile } = useUser()
+  const fileInputRef = React.useRef(null);
 
   const handleFileUpload = () => {
     fileInputRef.current.click();

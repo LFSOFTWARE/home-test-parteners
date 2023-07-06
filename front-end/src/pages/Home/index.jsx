@@ -1,15 +1,15 @@
 
-import { useContext } from 'react';
 import { Card } from '../../components/Card';
 import { SearchBar } from '../../components/SearchBar';
 import { CardWrapper, Container, Content, SearchBox } from './styles';
-import { UserContext } from '../../contexts/userContext';
-import ButtonUpload from '../../components/ButtonUpload';
 
+import ButtonUpload from '../../components/ButtonUpload';
+import { useUser } from '../../hooks/useUser';
 
 
 export function Home() {
-  const { users } = useContext(UserContext)
+  const { users } = useUser()
+
   return (
     <Container>
       <Content>

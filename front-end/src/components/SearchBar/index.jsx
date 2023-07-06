@@ -1,12 +1,11 @@
 
-import { useContext } from 'react';
 import { Container, Input, SearchIcon } from './styles';
-import { UserContext } from '../../contexts/userContext';
+import { useUser } from '../../hooks/useUser';
 
 
 export function SearchBar() {
 
-  const { setQuery } = useContext(UserContext)
+  const { setQuery } = useUser()
 
   return (
     <Container>

@@ -1,4 +1,3 @@
-
 import React, { createContext, useEffect, useState } from 'react';
 import { PostFile, fetchUsers } from '../services/userService';
 
@@ -9,21 +8,8 @@ export const UserProvider = ({ children }) => {
   const [query, setQuery] = useState(null);
   const [file, setFile] = useState(null);
 
-  async function getUsers() {
-    try {
-      const users = await fetchUsers();
-      setUsers(users);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
-    getUsers();
-  }, [])
-
-  useEffect(() => {
-    const getUsersBySearch = async () => {
+    async function getUsers() {
       try {
         const users = await fetchUsers(query);
         setUsers(users);
@@ -31,21 +17,21 @@ export const UserProvider = ({ children }) => {
         console.error(error);
       }
     }
-    getUsersBySearch();
-  }, [query])
+    getUsers();
+  }, [query]);
 
   useEffect(() => {
-    const getUsersBySearch = async () => {
+    async function uploadFile() {
       try {
-        if(file){
+        if (file) {
           await PostFile(file);
         }
       } catch (error) {
         console.error(error);
       }
     }
-    getUsersBySearch();
-  }, [file])
+    uploadFile();
+  }, [file]);
 
   const contextValues = {
     users,
