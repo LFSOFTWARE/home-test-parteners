@@ -25,17 +25,18 @@ export async function fetchUsers(query, page) {
   }
 }
 
-export async function PostFile(FILE) {
+export async function PostFile(file) {
   try {
     const formData = new FormData();
-    formData.append("file", FILE);
+    formData.append("file", file);
 
     const response = await axios.post('http://localhost:8080/api/files', formData);
     const { data } = response.data;
+
     enqueueSnackbar("Successfully uploaded", { variant:"success"});
     return data;
   } catch (error) {
-    enqueueSnackbar(error.message, { variant:"error"})
-    throw new Error('Falha ao buscar os usuários');
+    console.log(error);
+    enqueueSnackbar(error?.response?.data, { variant:"error"})
   }
 }

@@ -25,6 +25,11 @@ const routes = require('./src/routes/index');
 
 app.use('/api', routes);
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status || 500).send(err.message || 'An error occurred.');
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

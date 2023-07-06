@@ -13,6 +13,8 @@ function ButtonUpload() {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setFile(file)
+    event.target.value = null; 
+
   };
 
   return (

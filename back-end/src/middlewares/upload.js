@@ -6,7 +6,7 @@ const upload = multer({
     if (file.mimetype === 'text/csv') {
       cb(null, true);
     } else {
-      cb(new Error('O arquivo deve ser um CSV válido.'), false);
+      cb(new Error('The file need be an CSV file.'), false);
     }
   }
 });
