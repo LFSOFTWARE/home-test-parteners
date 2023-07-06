@@ -3,8 +3,38 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background-color: #142436;
   width: 15%;
+  max-width: 284px;
+  margin: 20px;
+  padding: 20px;
   height: 300px;
-  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  justify-content: space-between;
+
+  h1{
+    color: white;
+  }
+  h3{
+    color: white;
+    font-weight: 500;
+  }
+
 `;
+
+export const Icon = styled.img`
+  width: 20px;
+  margin-right: 1.5rem;
+`;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 20px;;
+`;
+
+export const BoxInformations = styled.div`
+width: 100%;
+
+`
