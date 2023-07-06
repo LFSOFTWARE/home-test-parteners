@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: #142436;
-  width: 15%;
-  max-width: 284px;
-  min-width: 284px;
+  width: 284px;
   margin: 20px;
   padding: 20px;
   height: 300px;
@@ -24,6 +22,10 @@ export const Container = styled.div`
   &:hover{
     cursor: pointer;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  }
+
+  @media (max-width: 425px) {
+    width: 90%;
   }
 `;
 
