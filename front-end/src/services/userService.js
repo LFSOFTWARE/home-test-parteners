@@ -1,9 +1,19 @@
 import axios from 'axios';
 
 
-export async function fetchUsers(query) {
+export async function fetchUsers(query, page) {
   try {
-    const url = `http://localhost:8080/api/users${query ? `?q=${query}` : ''}`;
+    let url = 'http://localhost:8080/api/users';
+
+
+    if (query) {
+      url += `?q=${query}`;
+    }
+
+    if (page) {
+      const operation = query ? '&' : '?';
+      url += `${operation}page=${page}`;
+    }
 
     const response = await axios.get(url);
     const { data } = response.data;

@@ -10,15 +10,16 @@ export const UserProvider = ({ children }) => {
   const [page, setPage] = React.useState(1);
 
   const nextPage = () => {
-    setPage(page + 1)
+    if (users.length > 49) {
+      setPage(page + 1)
+    }
   }
   const previousPage = () => {
-    if(page >  1 ){
+    if (page > 1) {
       setPage(page - 1)
     }
   }
 
-  
   React.useEffect(() => {
     async function getUsers() {
       try {
@@ -30,6 +31,18 @@ export const UserProvider = ({ children }) => {
     }
     getUsers();
   }, [query]);
+  
+  React.useEffect(() => {
+    async function getUsers() {
+      try {
+        const users = await fetchUsers(query, page);
+        setUsers(users);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getUsers();
+  }, [page, query]);
 
   React.useEffect(() => {
     async function uploadFile() {
